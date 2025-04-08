@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import InteractiveMasterPlan from '../components/InteractiveMasterPlan';
+import PricingCalculator from '../components/PricingCalculator';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Pricing">
+  <div class="min-h-screen bg-gradient-to-br from-xelvana-green to-xelvana-orange">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center text-white mb-16">
+          <h1 class="text-5xl font-bold mb-6" data-aos="fade-up">Encuentra tu Lote Ideal</h1>
+          <p class="text-xl text-white/80" data-aos="fade-up" data-aos-delay="100">
+            Explora nuestro plan maestro interactivo y calcula tu inversión
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Plan Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+          <h2 class="text-3xl font-bold text-white mb-8" data-aos="fade-up">Plan Maestro Interactivo</h2>
+          <div class="h-[600px] rounded-xl overflow-hidden" data-aos="fade-up">
+            <InteractiveMasterPlan client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Calculator Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <h2 class="text-3xl font-bold text-white mb-8" data-aos="fade-up">Calcula tu Inversión</h2>
+            <div data-aos="fade-up">
+              <PricingCalculator client:load />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-white text-center mb-12" data-aos="fade-up">
+            Beneficios de Invertir en Xelvana
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8" data-aos="fade-up">
+              <h3 class="text-xl font-bold text-white mb-6">Financiamiento Flexible</h3>
+              <ul class="space-y-4 text-white/80">
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Enganche desde 20% del valor total</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Plazos de pago de hasta 24 meses</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Mensualidades fijas sin intereses</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="text-xl font-bold text-white mb-6">Inversión Segura</h3>
+              <ul class="space-y-4 text-white/80">
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Plusvalía garantizada por ubicación estratégica</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Infraestructura de primer nivel</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-xelvana-orange mr-2">✓</span>
+                  <span>Desarrollo con amenidades premium</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+  });
+</script>

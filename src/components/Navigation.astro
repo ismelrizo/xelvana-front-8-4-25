@@ -1,0 +1,24 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = ['amenities', 'location', 'pricing', 'masterplan', 'contact'];
+---
+
+<div class="hidden md:flex items-center gap-8 relative z-10">
+  {navItems.map((item) => (
+    <a
+      href={`#${item}`}
+      class="text-white relative group py-2"
+    >
+      <span class="relative z-10">{t(`nav.${item}`)}</span>
+      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-xelvana-orange group-hover:w-full transition-all duration-300"></span>
+    </a>
+  ))}
+  <div class="pl-4">
+    <LanguageSwitcher />
+  </div>
+</div>

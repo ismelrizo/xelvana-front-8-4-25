@@ -1,0 +1,39 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = ['amenities', 'location', 'pricing', 'masterplan', 'contact'];
+---
+
+<div class="md:hidden hidden transform transition-transform duration-300 ease-in-out" id="mobileMenu">
+  <div class="mx-4 mt-2 bg-gradient-to-b backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden">
+    <div class="p-6 space-y-6">
+      {navItems.map((item) => (
+        <a
+          href={`#${item}`}
+          class="block text-white relative group py-2 px-4 rounded-lg transition-all hover:bg-white/10"
+        >
+          <span class="relative z-10">{t(`nav.${item}`)}</span>
+          <span class="absolute bottom-0 left-4 right-4 h-0.5 bg-xelvana-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+        </a>
+      ))}
+      <div class="pt-4 flex justify-center">
+        <LanguageSwitcher />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Close mobile menu when clicking on a link
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

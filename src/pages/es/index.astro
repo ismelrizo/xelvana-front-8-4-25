@@ -1,0 +1,333 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Map from '../../components/Map';
+import MasterPlanMap from '../../components/MasterPlanMap';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const coordinates = [20.9673702, -89.5925857];
+
+const features = [
+  {
+    icon: "💰",
+    title: "Financiamiento Flexible",
+    description: "Planes de pago adaptados a tus necesidades"
+  },
+  {
+    icon: "📈",
+    title: "Alta Plusvalía",
+    description: "Inversión segura con crecimiento garantizado"
+  },
+  {
+    icon: "🏗️",
+    title: "Infraestructura Premium",
+    description: "Servicios subterráneos y amenidades de lujo"
+  }
+];
+---
+
+<Layout title="Bienvenido">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80" 
+        alt="Selva tropical exuberante" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="relative h-screen flex items-center justify-center">
+      <div class="text-center text-white" data-aos="fade-up">
+        <span class="block text-xl mb-4 text-xelvana-orange font-medium animate-fade-in">Bienvenido a</span>
+        <h1 class="text-7xl font-bold mb-4 animate-fade-in">Xelvana</h1>
+        <p class="text-2xl mb-2 animate-slide-up">La entrada a la selva</p>
+        <p class="text-xl mb-8 text-white/80 animate-slide-up">Donde la naturaleza y el lujo se encuentran</p>
+        <div class="flex gap-4 justify-center animate-bounce-in">
+          <a href="#masterplan" class="bg-xelvana-green hover:bg-xelvana-green/90 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            Ver Lotes
+          </a>
+          <a href="#contact" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#amenities" class="text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section id="amenities" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&q=80" 
+        alt="Amenidades de lujo" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Amenidades Destacadas</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🌳</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Áreas Verdes</h3>
+            <p class="text-white/80">Extensos parques y jardines para tu disfrute</p>
+          </div>
+        </div>
+        <div class="group" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🏊‍♂️</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Piscina</h3>
+            <p class="text-white/80">Área de piscina estilo resort para residentes</p>
+          </div>
+        </div>
+        <div class="group" data-aos="fade-up" data-aos-delay="300">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🔒</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Seguridad 24/7</h3>
+            <p class="text-white/80">Comunidad cerrada con vigilancia las 24 horas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80" 
+        alt="Ubicación natural" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-orange/95 to-xelvana-green/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Ubicación Estratégica</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right" class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-semibold mb-4">Ubicación Privilegiada</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>15 minutos de centros comerciales</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Fácil acceso a avenidas principales</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Cerca de instituciones educativas</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Próximo a centros médicos</p>
+            </li>
+          </ul>
+        </div>
+        <div class="h-[400px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform" data-aos="fade-left">
+          <Map client:load coordinates={coordinates} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Plan Section -->
+  <section id="masterplan" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80" 
+        alt="Fondo natural" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-8 text-white" data-aos="fade-up">Plan Maestro</h2>
+      <div class="max-w-4xl mx-auto mb-8" data-aos="fade-up">
+        <p class="text-center text-white/80">
+          Explora nuestro plan maestro cuidadosamente diseñado con lotes premium de varios tamaños.
+          Haz clic en cualquier lote para ver información detallada y disponibilidad.
+        </p>
+      </div>
+      <div class="h-[600px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform" data-aos="zoom-in">
+        <MasterPlanMap client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80" 
+        alt="Fondo natural" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-orange/95 to-xelvana-green/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-6 text-white" data-aos="fade-up">Invierte en tu futuro</h2>
+        <p class="text-xl text-white/80 mb-12" data-aos="fade-up" data-aos-delay="100">
+          Descubre nuestros planes de financiamiento exclusivos y asegura tu patrimonio en el desarrollo más prometedor de la zona
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {features.map((feature, index) => (
+          <div 
+            class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105 hover:bg-white/20"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+              <span class="text-3xl">{feature.icon}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4">{feature.title}</h3>
+            <p class="text-white/80">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center" data-aos="fade-up">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4">Lotes desde</h3>
+          <div class="text-5xl font-bold mb-6">$450,000 MXN</div>
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Enganche desde 20%</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Plazos hasta 24 meses</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Mensualidades fijas</span>
+            </li>
+          </ul>
+          <a 
+            href="/pricing" 
+            class="inline-block bg-white text-xelvana-green px-8 py-3 rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
+          >
+            Calcular mi inversión
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&q=80" 
+        alt="Fondo natural" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Contáctanos</h2>
+      <div class="max-w-lg mx-auto">
+        <form class="space-y-6 bg-white/10 backdrop-blur-sm rounded-2xl p-8" data-aos="fade-up">
+          <div class="group">
+            <input type="text" placeholder="Nombre completo" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <input type="email" placeholder="Correo electrónico" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <input type="tel" placeholder="Teléfono" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <textarea placeholder="Mensaje" rows="4" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-white text-xelvana-green py-3 rounded-lg hover:bg-white/90 transform hover:scale-[1.02] transition-all font-semibold">
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    70% { transform: scale(0.9); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 1s ease-out 0.3s both;
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 1s cubic-bezier(0.36, 0, 0.66, 1) 0.5s both;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+  });
+</script>

@@ -1,0 +1,32 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Logo from './Logo.astro';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<footer class="bg-xelvana-green text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="mb-4">
+          <Logo />
+        </div>
+        <p class="text-gray-300">{lang === 'es' ? 'Tu proyecto residencial de ensueño en una ubicación privilegiada.' : 'Your dream residential project in a privileged location.'}</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">{lang === 'es' ? 'Contacto' : 'Contact'}</h3>
+        <p class="text-gray-300">Email: info@xelvana.com</p>
+        <p class="text-gray-300">{lang === 'es' ? 'Teléfono' : 'Phone'}: +123 456 7890</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">{lang === 'es' ? 'Síguenos' : 'Follow Us'}</h3>
+        <div class="flex gap-4">
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Facebook</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

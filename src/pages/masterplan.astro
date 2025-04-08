@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import InteractiveMasterPlan from '../components/InteractiveMasterPlan';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const statistics = [
+  { label: 'Total Lots', value: '120' },
+  { label: 'Available', value: '45' },
+  { label: 'Reserved', value: '35' },
+  { label: 'Sold', value: '40' }
+];
+
+const amenities = [
+  {
+    icon: '🌳',
+    title: 'Green Areas',
+    description: '30% of the development dedicated to green spaces'
+  },
+  {
+    icon: '🏊‍♂️',
+    title: 'Pool Club',
+    description: 'Resort-style pool with lounging areas'
+  },
+  {
+    icon: '🎮',
+    title: 'Club House',
+    description: 'Modern facilities for community gatherings'
+  }
+];
+---
+
+<Layout title="Master Plan">
+  <div class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 pt-32 pb-16">
+      <div class="max-w-4xl mx-auto text-center text-white mb-16">
+        <h1 class="text-5xl font-bold mb-6" data-aos="fade-up">Interactive Master Plan</h1>
+        <p class="text-xl text-gray-300" data-aos="fade-up" data-aos-delay="100">
+          Explore our available lots and find your perfect space in our community
+        </p>
+      </div>
+
+      <!-- Statistics -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {statistics.map((stat, index) => (
+          <div 
+            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white text-center"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div class="text-3xl font-bold mb-2">{stat.value}</div>
+            <div class="text-gray-300">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Interactive Map -->
+      <div 
+        class="bg-white rounded-3xl shadow-2xl overflow-hidden"
+        data-aos="fade-up"
+      >
+        <div class="p-8">
+          <div class="h-[600px]">
+            <InteractiveMasterPlan client:load />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amenities Section -->
+    <section class="bg-white py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">
+          Premium Amenities
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {amenities.map((amenity, index) => (
+            <div 
+              class="group bg-gray-50 rounded-2xl p-8 text-center transform transition-all duration-300 hover:scale-105"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="w-16 h-16 bg-xelvana-green/10 rounded-xl flex items-center justify-center mx-auto mb-6 transform transition-all duration-300 group-hover:rotate-6">
+                <span class="text-3xl">{amenity.icon}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-4">{amenity.title}</h3>
+              <p class="text-gray-600">{amenity.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-xelvana-green to-xelvana-orange py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center text-white">
+          <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">
+            Ready to Find Your Perfect Lot?
+          </h2>
+          <p class="text-xl mb-12" data-aos="fade-up" data-aos-delay="100">
+            Contact our sales team to learn more about available lots and pricing
+          </p>
+          <div class="flex gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
+            <button class="bg-white text-xelvana-green px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+              Schedule a Visit
+            </button>
+            <button class="bg-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105">
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>

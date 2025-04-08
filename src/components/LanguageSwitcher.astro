@@ -1,0 +1,26 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const path = Astro.url.pathname.replace(/^\/(en|es)/, '');
+---
+
+<div class="flex items-center gap-2 bg-white rounded-full px-4 py-2">
+  <a 
+    href={`/es${path}`} 
+    class={`${lang === 'es' ? 'text-xelvana-orange font-semibold' : 'text-xelvana-green'} hover:text-xelvana-orange transition-colors relative group px-2 py-1`}
+  >
+    ES
+    {lang === 'es' && <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-xelvana-orange"></span>}
+    <span class="absolute inset-0 bg-white/0 group-hover:bg-gray-100 rounded-full transition-all -z-10"></span>
+  </a>
+  <span class="text-gray-300">|</span>
+  <a 
+    href={`/en${path}`} 
+    class={`${lang === 'en' ? 'text-xelvana-orange font-semibold' : 'text-xelvana-green'} hover:text-xelvana-orange transition-colors relative group px-2 py-1`}
+  >
+    EN
+    {lang === 'en' && <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-xelvana-orange"></span>}
+    <span class="absolute inset-0 bg-white/0 group-hover:bg-gray-100 rounded-full transition-all -z-10"></span>
+  </a>
+</div>

@@ -1,0 +1,333 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Map from '../../components/Map';
+import MasterPlanMap from '../../components/MasterPlanMap';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const coordinates = [20.9673702, -89.5925857];
+
+const features = [
+  {
+    icon: "💰",
+    title: "Flexible Financing",
+    description: "Payment plans adapted to your needs"
+  },
+  {
+    icon: "📈",
+    title: "High Capital Gains",
+    description: "Secure investment with guaranteed growth"
+  },
+  {
+    icon: "🏗️",
+    title: "Premium Infrastructure",
+    description: "Underground services and luxury amenities"
+  }
+];
+---
+
+<Layout title="Welcome">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80" 
+        alt="Lush tropical jungle" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="relative h-screen flex items-center justify-center">
+      <div class="text-center text-white" data-aos="fade-up">
+        <span class="block text-xl mb-4 text-xelvana-orange font-medium animate-fade-in">Welcome to</span>
+        <h1 class="text-7xl font-bold mb-4 animate-fade-in">Xelvana</h1>
+        <p class="text-2xl mb-2 animate-slide-up">The gateway to the jungle</p>
+        <p class="text-xl mb-8 text-white/80 animate-slide-up">Where nature and luxury meet</p>
+        <div class="flex gap-4 justify-center animate-bounce-in">
+          <a href="#masterplan" class="bg-xelvana-green hover:bg-xelvana-green/90 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            View Lots
+          </a>
+          <a href="#contact" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#amenities" class="text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section id="amenities" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&q=80" 
+        alt="Luxury amenities" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Featured Amenities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🌳</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Green Areas</h3>
+            <p class="text-white/80">Extensive parks and gardens for your enjoyment</p>
+          </div>
+        </div>
+        <div class="group" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🏊‍♂️</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Swimming Pool</h3>
+            <p class="text-white/80">Resort-style pool area for residents</p>
+          </div>
+        </div>
+        <div class="group" data-aos="fade-up" data-aos-delay="300">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 group-hover:scale-105 group-hover:bg-white/20">
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+              <span class="text-3xl">🔒</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">24/7 Security</h3>
+            <p class="text-white/80">Gated community with round-the-clock surveillance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80" 
+        alt="Nature location" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-orange/95 to-xelvana-green/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Strategic Location</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right" class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-semibold mb-4">Prime Location</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>15 minutes from shopping centers</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Easy access to main avenues</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Close to educational institutions</p>
+            </li>
+            <li class="flex items-start transform hover:translate-x-2 transition-transform">
+              <span class="text-white mr-2">✓</span>
+              <p>Near medical facilities</p>
+            </li>
+          </ul>
+        </div>
+        <div class="h-[400px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform" data-aos="fade-left">
+          <Map client:load coordinates={coordinates} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Plan Section -->
+  <section id="masterplan" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80" 
+        alt="Nature background" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-8 text-white" data-aos="fade-up">Master Plan</h2>
+      <div class="max-w-4xl mx-auto mb-8" data-aos="fade-up">
+        <p class="text-center text-white/80">
+          Explore our carefully designed master plan featuring premium lots in various sizes.
+          Click on any lot to view detailed information and availability.
+        </p>
+      </div>
+      <div class="h-[600px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform" data-aos="zoom-in">
+        <MasterPlanMap client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80" 
+        alt="Nature background" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-orange/95 to-xelvana-green/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-orange/40 via-xelvana-orange/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-6 text-white" data-aos="fade-up">Invest in your future</h2>
+        <p class="text-xl text-white/80 mb-12" data-aos="fade-up" data-aos-delay="100">
+          Discover our exclusive financing plans and secure your investment in the most promising development in the area
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {features.map((feature, index) => (
+          <div 
+            class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105 hover:bg-white/20"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+              <span class="text-3xl">{feature.icon}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4">{feature.title}</h3>
+            <p class="text-white/80">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center" data-aos="fade-up">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4">Lots starting from</h3>
+          <div class="text-5xl font-bold mb-6">$450,000 MXN</div>
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Down payment from 20%</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Terms up to 24 months</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-xelvana-orange mr-2">✓</span>
+              <span>Fixed monthly payments</span>
+            </li>
+          </ul>
+          <a 
+            href="/pricing" 
+            class="inline-block bg-white text-xelvana-green px-8 py-3 rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
+          >
+            Calculate my investment
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&q=80" 
+        alt="Nature background" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green/95 to-xelvana-orange/95"></div>
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-xelvana-green/40 via-xelvana-green/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Contact Us</h2>
+      <div class="max-w-lg mx-auto">
+        <form class="space-y-6 bg-white/10 backdrop-blur-sm rounded-2xl p-8" data-aos="fade-up">
+          <div class="group">
+            <input type="text" placeholder="Full name" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <input type="tel" placeholder="Phone number" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]" />
+          </div>
+          <div class="group">
+            <textarea placeholder="Message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-white focus:ring focus:ring-white/20 transition-all transform group-hover:scale-[1.01]"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-white text-xelvana-green py-3 rounded-lg hover:bg-white/90 transform hover:scale-[1.02] transition-all font-semibold">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    70% { transform: scale(0.9); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 1s ease-out 0.3s both;
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 1s cubic-bezier(0.36, 0, 0.66, 1) 0.5s both;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+  });
+</script>

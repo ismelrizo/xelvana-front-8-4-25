@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Map from '../components/Map';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const coordinates = [20.9673702, -89.5925857];
+
+const nearbyPlaces = [
+  {
+    category: 'Shopping',
+    icon: '🛍️',
+    places: [
+      { name: 'Mall Plaza', distance: '5 min', icon: '🏬' },
+      { name: 'Supermarket', distance: '8 min', icon: '🛒' },
+      { name: 'Local Market', distance: '10 min', icon: '🏪' }
+    ]
+  },
+  {
+    category: 'Education',
+    icon: '🎓',
+    places: [
+      { name: 'International School', distance: '7 min', icon: '🏫' },
+      { name: 'University', distance: '12 min', icon: '🏛️' },
+      { name: 'Public Library', distance: '10 min', icon: '📚' }
+    ]
+  },
+  {
+    category: 'Healthcare',
+    icon: '⚕️',
+    places: [
+      { name: 'General Hospital', distance: '10 min', icon: '🏥' },
+      { name: 'Medical Center', distance: '8 min', icon: '🏨' },
+      { name: 'Pharmacy', distance: '5 min', icon: '💊' }
+    ]
+  }
+];
+---
+
+<Layout title="Location">
+  <!-- Hero Section -->
+  <div class="relative min-h-screen">
+    <div class="absolute inset-0">
+      <Map client:load coordinates={coordinates} />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
+    <div class="relative container mx-auto px-4 pt-32">
+      <div class="max-w-4xl">
+        <h1 class="text-6xl font-bold text-white mb-6" data-aos="fade-right">
+          Strategic Location
+        </h1>
+        <p class="text-2xl text-white/90 mb-8" data-aos="fade-right" data-aos-delay="100">
+          Perfectly positioned in the heart of development
+        </p>
+        <div class="flex gap-4" data-aos="fade-right" data-aos-delay="200">
+          <button class="bg-xelvana-green hover:bg-xelvana-green/90 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            Get Directions
+          </button>
+          <button class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Benefits -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="group" data-aos="fade-up">
+            <div class="bg-gradient-to-br from-xelvana-green/5 to-xelvana-green/10 rounded-3xl p-8 h-full transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl">
+              <div class="w-16 h-16 bg-xelvana-green/10 rounded-2xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+                <span class="text-3xl">🌆</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Prime Location</h3>
+              <p class="text-gray-600">Located in a rapidly developing area with high appreciation potential</p>
+            </div>
+          </div>
+          <div class="group" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-gradient-to-br from-xelvana-orange/5 to-xelvana-orange/10 rounded-3xl p-8 h-full transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl">
+              <div class="w-16 h-16 bg-xelvana-orange/10 rounded-2xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+                <span class="text-3xl">🛣️</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Easy Access</h3>
+              <p class="text-gray-600">Direct connection to main highways and transportation hubs</p>
+            </div>
+          </div>
+          <div class="group" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-gradient-to-br from-blue-500/5 to-blue-500/10 rounded-3xl p-8 h-full transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl">
+              <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 transform transition-all duration-300 group-hover:rotate-6">
+                <span class="text-3xl">🏢</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Urban Living</h3>
+              <p class="text-gray-600">Close proximity to business districts and entertainment areas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Places -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">Everything Within Reach</h2>
+      <div class="max-w-6xl mx-auto">
+        {nearbyPlaces.map((category, index) => (
+          <div class="mb-12 last:mb-0" data-aos="fade-up" data-aos-delay={index * 100}>
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-12 h-12 bg-xelvana-green/10 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">{category.icon}</span>
+              </div>
+              <h3 class="text-2xl font-bold">{category.category}</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {category.places.map(place => (
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                      <span class="text-xl">{place.icon}</span>
+                    </div>
+                    <div>
+                      <p class="font-semibold">{place.name}</p>
+                      <p class="text-sm text-gray-500">{place.distance}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-xelvana-green to-xelvana-orange opacity-90"></div>
+    <div class="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+    <div class="container mx-auto px-4 relative">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Ready to Experience the Location?</h2>
+        <p class="text-xl mb-12 text-white/90" data-aos="fade-up" data-aos-delay="100">
+          Schedule a visit and discover why this is the perfect place for your new home
+        </p>
+        <div class="flex gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
+          <button class="bg-white text-xelvana-green px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+            Schedule Tour
+          </button>
+          <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all transform hover:scale-105">
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>
