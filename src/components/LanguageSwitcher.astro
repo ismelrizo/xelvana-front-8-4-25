@@ -1,26 +1,48 @@
 ---
 import { getLangFromUrl } from '../i18n/utils';
+import SpainFlag from './icons/SpainFlag.astro';
+import USFlag from './icons/USFlag.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const path = Astro.url.pathname.replace(/^\/(en|es)/, '');
 ---
 
-<div class="flex items-center gap-2 bg-white rounded-full px-4 py-2">
-  <a 
-    href={`/es${path}`} 
-    class={`${lang === 'es' ? 'text-xelvana-orange font-semibold' : 'text-xelvana-green'} hover:text-xelvana-orange transition-colors relative group px-2 py-1`}
+<div class="relative group">
+  <button 
+    class="flex items-center gap-2 hover:bg-white/20 p-2 transition-all duration-300"
+    aria-label="Language selector"
+    id="languageButton"
   >
-    ES
-    {lang === 'es' && <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-xelvana-orange"></span>}
-    <span class="absolute inset-0 bg-white/0 group-hover:bg-gray-100 rounded-full transition-all -z-10"></span>
-  </a>
-  <span class="text-gray-300">|</span>
-  <a 
-    href={`/en${path}`} 
-    class={`${lang === 'en' ? 'text-xelvana-orange font-semibold' : 'text-xelvana-green'} hover:text-xelvana-orange transition-colors relative group px-2 py-1`}
+    {lang === 'es' ? <SpainFlag /> : <USFlag />}
+    <!-- <svg 
+      class="w-4 h-4 text-white transition-transform duration-300 group-hover:rotate-180" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg> -->
+  </button>
+
+  <div 
+    class="absolute right-0 mt-2 py-2 w-32 bg-white/10 backdrop-blur-md rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100"
+    role="menu"
   >
-    EN
-    {lang === 'en' && <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-xelvana-orange"></span>}
-    <span class="absolute inset-0 bg-white/0 group-hover:bg-gray-100 rounded-full transition-all -z-10"></span>
-  </a>
+    <a 
+      href={`/es${path}`} 
+      class={`flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-white/20 transition-colors ${lang === 'es' ? 'bg-white/10' : ''}`}
+      role="menuitem"
+    >
+      <SpainFlag />
+      <span>Español</span>
+    </a>
+    <a 
+      href={`/en${path}`} 
+      class={`flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-white/20 transition-colors ${lang === 'en' ? 'bg-white/10' : ''}`}
+      role="menuitem"
+    >
+      <USFlag />
+      <span>English</span>
+    </a>
+  </div>
 </div>

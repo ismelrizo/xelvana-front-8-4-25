@@ -10,8 +10,8 @@ const t = useTranslations(lang);
 const navItems = ['amenities', 'location', 'pricing', 'masterplan', 'contact'];
 ---
 
-<header class="fixed w-full z-50 transition-all duration-300" id="header">
-  <nav class="container mx-auto px-4 py-4">
+<header class="fixed w-full z-50 transition-all duration-300 backdrop-blur-sm" id="header">
+  <nav class="container mx-auto px-2 py-2 ">
     <div class="flex justify-between items-center px-8 py-4">
       <div class="flex items-center relative z-10">
         <a href="/" class="hover:opacity-90 transition-opacity">
@@ -54,6 +54,21 @@ const navItems = ['amenities', 'location', 'pricing', 'masterplan', 'contact'];
   // Header scroll behavior
   const header = document.getElementById('header');
   let lastScroll = 0;
+
+ // window.addEventListener('scroll', () => {
+ //   const currentScroll = window.pageYOffset;
+ //   
+ //   if (currentScroll > 80) {
+ //     header?.classList.add('py-2');
+ //     header?.classList.add('shadow-md');
+ //   } else {
+ //     header?.classList.remove('py-2');
+ //     header?.classList.remove('shadow-md');
+ //   }
+ //   
+ //   lastScroll = currentScroll;
+ // });
+ 
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
